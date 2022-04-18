@@ -19,9 +19,9 @@ func TestName(t *testing.T) {
 			t.Errorf("error getting score: %v", err)
 		}
 
-		expectedScore := 3
+		expectedScore := "3"
 		if gotScore != expectedScore {
-			t.Errorf("Expected score to be %d, got %d", expectedScore, gotScore)
+			t.Errorf("Expected score to be %v, got %v", expectedScore, gotScore)
 		}
 	})
 }
