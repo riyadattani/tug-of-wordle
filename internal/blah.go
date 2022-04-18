@@ -2,8 +2,21 @@ package internal
 
 import "strings"
 
-func GetScore(wordleOutput string) (string, error) {
+type Score map[string]string
+
+type Row struct {
+	Game  string
+	Score Score
+}
+
+// {'300': [{'Riya': '2'}, {'Adi': '3'}]}
+
+func GetRow(name, wordleOutput string) (Row, error) {
 	s := strings.Split(wordleOutput, " ")
-	score := s[2][:1]
-	return score, nil
+	value := s[2][:1]
+	gameNumber := s[1]
+	score := Score{name: value}
+
+	return Row{gameNumber, score}, nil
+
 }
