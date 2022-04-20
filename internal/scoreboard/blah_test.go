@@ -1,10 +1,10 @@
-package internal_test
+package scoreboard_test
 
 import (
 	"reflect"
 	"testing"
 
-	"tug-of-wordle/internal"
+	"tug-of-wordle/internal/scoreboard"
 )
 
 func TestName(t *testing.T) {
@@ -17,14 +17,14 @@ func TestName(t *testing.T) {
 
 		name := "Riya"
 
-		row, err := internal.GetRow(name, wordleOutput)
+		row, err := scoreboard.GetRow(name, wordleOutput)
 		if err != nil {
 			t.Errorf("error getting score: %v", err)
 		}
 
-		expectedRow := internal.Row{
+		expectedRow := scoreboard.Row{
 			Game:  "301",
-			Score: internal.Score{name: "3"},
+			Score: scoreboard.Score{name: "3"},
 		}
 
 		if reflect.DeepEqual(row, expectedRow) == false {
