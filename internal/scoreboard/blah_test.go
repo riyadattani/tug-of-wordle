@@ -4,6 +4,7 @@ import (
 	"reflect"
 	"testing"
 
+	"tug-of-wordle/internal/ports"
 	"tug-of-wordle/internal/scoreboard"
 )
 
@@ -22,9 +23,9 @@ func TestName(t *testing.T) {
 			t.Errorf("error getting score: %v", err)
 		}
 
-		expectedRow := scoreboard.Row{
+		expectedRow := ports.Row{
 			Game:  "301",
-			Score: scoreboard.Score{name: "3"},
+			Score: ports.Score{name: "3"},
 		}
 
 		if reflect.DeepEqual(row, expectedRow) == false {

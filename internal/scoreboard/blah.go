@@ -1,19 +1,16 @@
 package scoreboard
 
-import "strings"
+import (
+	"strings"
 
-type Score map[string]string
+	"tug-of-wordle/internal/ports"
+)
 
-type Row struct {
-	Game  string
-	Score Score
-}
-
-func GetRow(name, wordleOutput string) (Row, error) {
+func GetRow(name, wordleOutput string) (ports.Row, error) {
 	s := strings.Split(wordleOutput, " ")
 	value := s[2][:1]
 	gameNumber := s[1]
-	score := Score{name: value}
+	score := ports.Score{name: value}
 
-	return Row{gameNumber, score}, nil
+	return ports.Row{Game: gameNumber, Score: score}, nil
 }

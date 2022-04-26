@@ -2,23 +2,30 @@ package commandline
 
 import (
 	"flag"
-	"os"
+	"fmt"
 )
 
-func GetValues() (string, string) {
-	namePtr := flag.String("name", "", "e.g. Susan")
+type CommandLine struct {
+}
+
+func New() *CommandLine {
+	return &CommandLine{}
+}
+
+func (c CommandLine) GetNameAndScore() (string, string, error) {
 	scorePtr := flag.String("score", "", "paste your wordle score")
+	namePtr := flag.String("name", "", "e.g. Susan")
 	flag.Parse()
 
 	if *namePtr == "" {
 		flag.PrintDefaults()
-		os.Exit(1)
+		return "", "", fmt.Errorf("error parsing name")
 	}
 
 	if *scorePtr == "" {
 		flag.PrintDefaults()
-		os.Exit(1)
+		return "", "", fmt.Errorf("error parsing score")
 	}
 
-	return *namePtr, *scorePtr
+	return *namePtr, *scorePtr, nil
 }
