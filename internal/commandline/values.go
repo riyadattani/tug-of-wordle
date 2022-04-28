@@ -29,3 +29,5 @@ func (c CommandLine) GetNameAndScore() (string, string, error) {
 
 	return *namePtr, *scorePtr, nil
 }
+
+//https://gist.github.com/quii/0f7eb9f0305861cc78a816f6502d98e9
